@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import {Route,Routes} from "react-router-dom";
+import NavComponent from './NavComponent';
+import SideBar from './SideBar';
+import { useState } from 'react';
+import TableData from './Tabel.js'
 
 function App() {
+  const [tableData,setTableData] = useState(TableData);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+    {console.log(TableData)
+    }<button onClick={()=>{console.log(tableData)}}></button>
+     <Routes>
+        <Route path="/asd" element={<NavComponent setTableData={ setTableData}/>} />
+        <Route path="/about" element={<SideBar setTableData={ tableData}/>} />
+     </Routes>
     </div>
   );
 }
